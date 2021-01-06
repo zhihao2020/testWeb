@@ -25,6 +25,7 @@ def register(request):
         IDcard = request.POST.get('IDcard','')
         password = request.POST.get('password','')
         password2 = request.POST.get('password2','')#用于确定两次密码是否一致
+        
         last_name = request.POST.get('last_name','')
         if IDcard!='' and password!='' and last_name!="" and password2 !='':
             pattern = re.compile(r'[a-zA-Z0-9]{18}') 
@@ -58,7 +59,7 @@ def login(request):
             if username != "" and password != "":
                 if User.objects.filter(username=username).exists():
                     user = authenticate(username=username,password=password)
-                    print(user)
+                   
                     if user :
                         auth.login(request,user)
                         print("登录成功")

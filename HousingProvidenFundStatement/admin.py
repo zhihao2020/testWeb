@@ -126,8 +126,6 @@ class UploadExcel_Admin(admin.ModelAdmin):
         with open('media/hpfs/temp.xls','wb') as fd:
             for chunk in request.FILES['file']:
                 fd.write(chunk)
-        
-        
 
         try:
             get_excel_information('media/hpfs/temp.xls')

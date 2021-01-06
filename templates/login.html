@@ -17,7 +17,8 @@
 				<div class="registration">
 					<div class="signin-form profile">
 						<!--分成四个区域：标题，表格，第三方登录，注册-->
-                        <span style="font-size: 40px"><strong>用户登录</strong></span>
+						<span style="font-size: 40px"><strong>用户登录</strong></span>
+						<br>
                         <span style="color: red;font-size: 30px">{{errormsg}}</span>
 						<div class="login-form">
 							<form action="{%url 'login'%}" method="POST">
@@ -29,7 +30,7 @@
 								</div>
 							</form>
 						<p>
-							<a href="{%url 'register'%}" style="color: #FFFFFF"> 没有账号?注册</a>
+							<a href="{%url 'register'%}" style="color: #FFFFFF">若无账号，请注册</a>
 						</p>
 						<h6><a href="{%url 'roothome'%}" style="color: #FFFFFF">返回首页</a></h6>
 					</div>

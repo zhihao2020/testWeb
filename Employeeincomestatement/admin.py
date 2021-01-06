@@ -90,7 +90,7 @@ class UploadExcel_Admin(admin.ModelAdmin):
                         logined.add(per)
                     for y in PersonEIS.objects.only():
                         persondict[y.IDcard_num] = y.name
-                    test = set(persondict.keys)
+                    test = set(persondict.keys())
                     with open('media/download/temp_eis.txt','w') as fd:
                         for people in test.difference(logined):
                             fd.write('%s:%s \n'%(people,persondict[people]))

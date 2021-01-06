@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from HousingProvidenFundStatement.models import Person
-
+import ast
 # Create your views here.
 def peopleinformationshow(request):
     return HttpResponse('<p>用户展示页</p>')
