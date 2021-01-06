@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>华电龙口 人力资源部</title>
+		{% load static %}
+		<link href="{% static '\css\login.css' %}" rel="stylesheet" type="text/css">
+
+	</head>
+ 
+	<body >
+		<!--首先是整体容器，其次第一块区域，里面分为上下-->
+		<div class="pages_agile_info_w3l" >
+			<div class="over_lay_agile_pages_w3ls">
+				<div class="registration">
+					<div class="signin-form profile">
+						<!--分成四个区域：标题，表格，第三方登录，注册-->
+                        <span style="font-size: 40px"><strong>用户登录</strong></span>
+                        <span style="color: red;font-size: 30px">{{errormsg}}</span>
+						<div class="login-form">
+							<form action="{%url 'login'%}" method="POST">
+                                {% csrf_token %}
+                                <input type="text" name="IDcard" placeholder="身份证号" required="">
+								<input type="password" name="password" placeholder="密码" required="">
+								<div class="tp">
+									<input type="submit" value="登录">
+								</div>
+							</form>
+						<p>
+							<a href="{%url 'register'%}" style="color: #FFFFFF"> 没有账号?注册</a>
+						</p>
+						<h6><a href="{%url 'roothome'%}" style="color: #FFFFFF">返回首页</a></h6>
+					</div>
+				</div>
+				<div class="copyrights_agile">
+ 
+				</div>
+			</div>
+		</div>
+	</body>
+ 
+</html>

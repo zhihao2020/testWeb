@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+    <!-- Thanks to lixiaohan's dumplings that let me change the model of the website-->
+    <meta charset="utf-8"> 
+    <head>
+        <title>{{tellyou}}</title>
+        <style>
+            #header {
+                background-color:#1175f8;
+                color:white;
+                text-align:center;
+                padding:5px;
+            }
+            .header-top-center{
+                text-align:center;                
+            }
+           
+        </style>
+    </head>
+    <body>
+        {% if user.is_authenticated %}
+        <div id="header">
+            <h1>2020年度 职工收入对账</h1>
+        </div>
+        <div class="header-top-right"> 
+            <div class="signin"><span class="play-icon">用户名：{{user.username}}</span></div>
+            <div class="signin"><a href="{%url 'logout'%}" class="play-icon">退出</a></div>
+            <button type="button" style="width:100px;height:30px" name="print" value="打印" onclick="window.print()">打印</button>
+        </div>
+        <div class="header-top-center">
+            <h5><a href="{%url 'roothome'%}">返回首页</a></h5>
+        </div>
+        
+        <div id="content">
+            
+        <table border="1" style="margin:auto">           
+            <tr>       
+                <th rowspan="2">姓名</th>   
+                <th rowspan="2">工号</th>
+                <th rowspan="2">身份证号码</th>
+                <th colspan="2">本年度发放工资起止月份</th>
+
+                <th rowspan="2">年工资总额</th>
+                <th rowspan="2">月平均工资</th>
+                <!----<th rowspan="2">本人签字</th>--->
+                <th rowspan="2">备注</th>
+            </tr> 
+            <tr>
+                <th>起始月</th>
+                <th>终止月</th>
+            </tr>      
+            <tr>      
+                <td>{{name}}</td>   
+                <td>{{account}}</td>
+                <td>{{IDcard_num}}</td>
+                <td>{{month_start}}</td>
+                <td>{{month_end}}</td>
+                <td>{{sum_salary}}</td>
+                <td>{{month_salary}}</td>
+                <!---<td>{%if signature%}
+                    {{signature}}
+                    {% else %}
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    {% endif %}
+                </td>---->
+                <td>{%if comments%}
+                    {{comments}}
+                    {% else %}
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    {% endif %}
+                </td>
+            </tr>        
+        </table> 
+        </div>
+        {% else %}
+        <div class="signin" style="font-size:25px"><h4><strong><center>此内容只能登录后才可看见。你可以</center></strong></h4></div>
+        <div class="signin" style="font-size:25px"><a href="{% url 'register'%}" class="play-icon"><center>注册</center></a></div>
+        <div class="signin" style="font-size:25px"><a href="{% url 'login'%}" class="play-icon"><center>登录</center></a></div>
+        <div style="font-size:25px"><a href="{%url 'roothome'%}"><center>返回首页</center></a></div>
+        {% endif %}
+    </body>
+</html>

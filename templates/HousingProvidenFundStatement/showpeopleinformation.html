@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+<html>
+    <meta charset="utf-8"> 
+    <head>
+        <title>{{tellyou}}</title>
+        <style>
+            #header {
+                background-color:#1175f8;
+                color:white;
+                text-align:center;
+                padding:5px;
+            }
+            #header-top-right{
+                text-align: right;
+        
+            }
+            #left{
+                line-height:30px;   
+                position: absolute;
+                width:275px;
+                float:left;
+                padding:10px;          
+            }
+            #right {
+                line-height:30px;
+                margin-left:285px;
+                float:center;
+                padding:10px;        
+            }
+            .header-top-center{
+                text-align:center;                
+            }
+        </style>
+    </head>
+    <div>
+    </div>
+    <body>
+        {% if user.is_authenticated %}
+        <div id="header">
+            <h1>2020年度住房公积金个人账户对账单</h1>
+        </div>
+        <div class="header-top-right">
+            <div class="header-top-right"> 
+                <div class="signin"><span class="play-icon">用户名：{{user.username}}</span></div>
+                <div class="signin"><a href="{%url 'logout'%}" class="play-icon">退出</a></div>
+                <button type="button" style="width:100px;height:30px" name="print" value="打印" onclick="window.print()">打印</button>
+            </div>
+        </div>
+        <div class="header-top-center">
+            <h5><a href="{%url 'roothome'%}">返回首页</a></h5>
+        </div>
+        <p>单位账号：{{workaccount}} &nbsp;&nbsp;&nbsp;&nbsp;单位名称：{{workname}}</p>
+        <p>姓名：{{ name }}&nbsp;&nbsp;&nbsp;&nbsp;身份证号：{{user.username}}&nbsp;&nbsp;&nbsp;&nbsp;公积金账号：{{gongjijinzhanghao}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;单位（元）</p>
+       
+        <div id="left">
+        <table border="1">      
+            <!---此处需要加上缴存月份的数据-->     
+            <tr>       
+                <td>缴存月份</td>   
+                <td width="130px">{{deposit_month}}</td>
+            </tr>       
+            <tr>      
+                <td>账号累计余额：</td>   
+                <td>{{accumulated_account_balance}}</td>
+            </tr>        
+            <tr>      
+                <td>个缴累计余额：</td>   
+                <td>{{cumulative_balance}}</td>
+            </tr>  
+            <tr>      
+                <td>企补累计余额：</td>   
+                <td>{{qi_bu_cumulative_balance}} </td>
+            </tr>  
+            <tr>      
+                <td>上年末个缴余额：</td>   
+                <td>{{balance_at_the_end_of_the_previous_year}}</td>
+            </tr> 
+            <tr>      
+                <td>上年末企补余额：</td>   
+                <td>{{qi_ye_at_the_end_of_the_previous_year}}</td>
+            </tr> 
+            <tr>      
+                <td>上年末企补余额：</td>   
+                <td>{{qi_ye_at_the_end_of_the_previous_year}}</td>
+            </tr> 
+            <tr>      
+                <td>上年末个缴利息：</td>   
+                <td>{{interest_paid_at_the_end_of_the_previous_year}}</td>
+            </tr> 
+            <tr>      
+                <td>上年末企补利息:</td>   
+                <td>{{qi_ye_interest_paid_at_the_end_of_the_previous_year}}</td>
+            </tr> 
+            <tr>      
+                <td>本年个缴金额:</td>   
+                <td>{{amount_paid_this_year}}</td>
+            </tr>
+            <tr>      
+                <td>本年企补金额:</td>   
+                <td>{{the_amount_of_enterprise_compensation_this_year}}</td>
+            </tr>
+            <tr>      
+                <td>本年个缴利息:</td>   
+                <td>{{interest_paid_this_year}}</td>
+            </tr>
+            <tr>      
+                <td>本年企补利息:</td>   
+                <td>{{this_years_corporate_interest}}</td>
+            </tr>
+            <tr>      
+                <td>本年利率:</td>   
+                <td>{{interest_rate_this_year}}</td>
+            </tr>
+            <tr>      
+                <td>上年利率:</td>   
+                <td>{{last_year_interest_rate}}</td>
+            </tr>
+            <tr>      
+                <td> 本年提取金额:</td>   
+                <td>{{this_year_get_money}}</td>
+            </tr>
+            <tr>      
+                <td> 本年提取日期:</td>   
+                <td>{{withdrawal_date_this_year}}</td>
+            </tr>
+        </table> 
+        </div>  
+        <div id="right">  
+            
+            <table border='1' style="width: 800px;" >
+                
+                <tr> 
+                    <th>缴存月份</th>
+                    <th>个人缴费</th>
+                    <th>企业缴费</th>
+                    <th>记账日期</th>	
+                	
+                </tr>
+                    {% for key,value in content.items %}
+                    <tr>
+                    <td>{{ key }}</td> 
+                        {% for v in  value %}
+                        <td>{{ v }}</td>
+                        {% endfor %}
+                    </tr>
+                        {% endfor %}
+            </table>
+            <p>1.账户累计余额=上年末余额及利息+本年缴存额及利息-本年提取金额</p>
+            <p>2.个缴余额=账户累计余额/2 </p>
+            <p>3.企补余额=账户累计余额/2 </p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;签名：</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;年  月  日</p>
+        </div>  
+        {% else %}
+        <div class="signin" style="font-size:25px"><h4><strong><center>此内容只能登录后才可看见。你可以</center></strong></h4></div>
+        <div class="signin" style="font-size:25px"><a href="{% url 'register'%}" class="play-icon"><center>注册</center></a></div>
+        <div class="signin" style="font-size:25px"><a href="{% url 'login'%}" class="play-icon"><center>登录</center></a></div>
+        <div style="font-size:25px"><a href="{%url 'roothome'%}"><center>返回首页</center></a></div>
+        {% endif %}
+    
+    </body>
+    
+</html>

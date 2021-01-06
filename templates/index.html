@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>华电龙口发电股份有限公司 人力资源部</title>
+{% load static %}
+<link href="{% static 'css/home.css' %}" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+<!-- Main Container -->
+<div class="container"> 
+  <!-- Navigation -->
+  <header> <a href="">
+    <h4 class="logo"><img src="../static/images/CHDlogo.png" alt="" width="200" height="52" class="cards"/></h4>
+    </a>
+    <nav>
+      <ul>
+        
+        {% if user.is_authenticated %}
+        <li class="play-icon">用户名:{{user.username}}</li>
+        <li><a href="{% url 'logout' %}" method="GET">退出</a></li>
+        {% else %}
+        <li><a href="{% url 'register' %}">注册</a></li>
+        <li><a href="{% url 'login' %}">登录</a></li>
+        {% endif %}
+       
+        <li>
+          <div class="dropdown">
+            <span>查询</span>
+            <div class="dropdown-content">
+              <p><a href='EIS/result/' style="font-size: 16px;">职工收入对账</a></p>
+              <p><a href="HPFS/result/" style="font-size: 16px;">住房公积金对账</a></p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <!-- Hero Section -->
+  <section class="hero" id="hero" >
+    <h2 class="hero_header">华电龙口发电股份有限公司</h2>
+    <h2 class="hero_header">人力资源部对账系统</h2>
+    <p class="hidden">副标题</p>
+  </section>
+
+  <div class="copyright">&copy;2021-2022 <strong>华电龙口发电股份有限公司&nbsp;人力资源部</strong></div>
+</div>
+</body>
+</html>
