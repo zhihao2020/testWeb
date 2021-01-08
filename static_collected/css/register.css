@@ -17,14 +17,12 @@ a {
 .pages_agile_info_w3l {
 	background-image:url("../images/user_background.jpg");
 	background-repeat:no-repeat scroll transparent;background-size:100% 100%;
-	
 	top: 0;
 	bottom: 0;
 	width: 100%;
 }
 
 .over_lay_agile_pages_w3ls {
-
 	padding: 11em 2em 5.5em 2em;
 	height: 100%;
 	width: 100%;
@@ -33,7 +31,6 @@ a {
 /*文字居中，自身水平居中垂直大小，样式*/
 
 .signin-form.profile {
-	
 	text-align: center;
 	margin: 0 auto;
 	width: 25%;

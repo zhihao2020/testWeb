@@ -90,6 +90,7 @@ DATABASES = {
         'PASSWORD':cfg.get('mysql','PASSWORD'),
         'HOST':cfg.get('mysql','HOST'),
         'PORT':cfg.get('mysql','PORT'),
+        'CONN_MAX_AGE':5 * 60,
     }
 }
 

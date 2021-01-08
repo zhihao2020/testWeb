@@ -41,7 +41,7 @@ def register(request):
                 else:
                     return render(request,'register.html',{'errormsg':'两次输入密码不相同！'})
             else:      
-                return render(request,'register.html',{'errormsg':'身份证号不正确！'})
+                return render(request,'register.html',{'errormsg':'请输入18位身份证号！'})
         else:
             return render(request,'register.html',{'errormsg':'身份证、密码和姓名不能为空！'})
   

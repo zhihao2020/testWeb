@@ -18,4 +18,3 @@ def EIS_show_information(request):
         return render(request,"showEmployeeIncomeStatement.html",ctx)
     except:
         return render(request,"nofind.html")
-
