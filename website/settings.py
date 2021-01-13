@@ -9,7 +9,7 @@ import os
 from configparser import ConfigParser
 
 cfg = ConfigParser(interpolation=None)
-cfg.read('website\config.ini')
+cfg.read('./website/config.ini')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,8 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 #5dwu)2l0^=%kn#^84dc$_i@+%w*-o-im-3ju8t%d&v87lx%*-e
 #with open("website\secret.txt") as f:
 #    SECRET_KEY = f.read().strip()
-
-SECRET_KEY = cfg.get('default','SECRET_KEY')
+SECRET_KEY = '5dwu)2l0^=%kn#^84dc$_i@+%w*-o-iu-3ju8t%d&v872x%*-e'
+#SECRET_KEY = cfg.get('default','SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -85,11 +85,11 @@ WSGI_APPLICATION = 'website.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': cfg.get('mysql','NAME'),
-        'USER':cfg.get('mysql','USER'),
-        'PASSWORD':cfg.get('mysql','PASSWORD'),
-        'HOST':cfg.get('mysql','HOST'),
-        'PORT':cfg.get('mysql','PORT'),
+        'NAME': 'renshi',
+        'USER':'HR',
+        'PASSWORD':'lifang@2408zx',
+        'HOST':'localhost',
+        'PORT':'3306',
         'CONN_MAX_AGE':5 * 60,
     }
 }
