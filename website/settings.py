@@ -3,14 +3,14 @@ Created by zhihao
 
 there will add configure to reload secret contents
 """
-
 from pathlib import Path
 import os
 from configparser import ConfigParser
 
-cfg = ConfigParser(interpolation=None)
-cfg.read('./website/config.ini')
+#cfg = ConfigParser(interpolation=None)
+#cfg.read('./website/config.ini')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -18,7 +18,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#5dwu)2l0^=%kn#^84dc$_i@+%w*-o-im-3ju8t%d&v87lx%*-e
 #with open("website\secret.txt") as f:
 #    SECRET_KEY = f.read().strip()
 SECRET_KEY = '5dwu)2l0^=%kn#^84dc$_i@+%w*-o-iu-3ju8t%d&v872x%*-e'

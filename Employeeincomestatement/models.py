@@ -24,6 +24,8 @@ class PersonEIS(models.Model):
 
     comments = models.CharField(max_length=200,verbose_name="备注",blank=True,null=True,default=" ")
 
+    havelook = models.CharField(max_length=100,verbose_name="是否查看",blank=True,null=True,default="否")
+
     def __str__(self):
         return str(self.IDcard_num)
     

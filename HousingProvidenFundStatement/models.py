@@ -50,6 +50,9 @@ class Person(models.Model):
     #月份详细信息 
     #缴费月份、个人缴费、企业缴费、记账日期
     content = models.TextField(verbose_name='每月详细信息',blank=True,null=True,default="")
+
+    havelook = models.CharField(max_length=100,verbose_name="是否查看",blank=True,null=True,default="否")
+
     def __str__(self):
         return str(self.IDcard)
     class Meta:

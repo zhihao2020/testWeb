@@ -12,20 +12,22 @@ def HPFS_deal_post(request):
         ctx = {}
         #这里是通过User的模块，直接通过匹配IDcard和User.username
         if request.user.is_authenticated:
-                #user = User.objects.filter(username=request.user.username).values().get()['username']
-                #all_information = Person.objects.filter(user_id=user).values().get()
-                all_information = Person.objects.filter(IDcard=request.user.username).values().get()
-                for k,v in all_information.items():
-                    if k == "content":
-                        try:
-                            ctx[k]=ast.literal_eval(v)
-                        except :
-                            ctx[k] = ""
-                    else:
-                        ctx[k]=v    
-
-                return render(request,"showpeopleinformation.html",ctx)
-           
+            #user = User.objects.filter(username=request.user.username).values().get()['username']
+            #all_information = Person.objects.filter(user_id=user).values().get()
+            all_information = Person.objects.filter(IDcard=request.user.username).values().get()
+            for k,v in all_information.items():
+                if k == "content":
+                    try:
+                        ctx[k]=ast.literal_eval(v)
+                    except :
+                        ctx[k] = ""
+                else:
+                    ctx[k]=v    
+            temp = Person.objects.get(IDcard=request.user.username)
+            temp.havelook = '是'
+            temp.save()
+            return render(request,"showpeopleinformation.html",ctx)
+        
         return render(request,"showpeopleinformation.html",ctx)
     except :
         return render(request,"nofind.html")

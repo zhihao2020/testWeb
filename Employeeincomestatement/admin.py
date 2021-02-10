@@ -12,7 +12,6 @@ import csv
 
 # Register your models here.
 admin.site.site_header = '华电龙口 人力资源部 后台管理系统'
-admin.site.register(PersonEIS)
 
 def get_excel_information(excel_file):
     file = xlrd.open_workbook(excel_file)
@@ -103,3 +102,10 @@ class UploadExcel_Admin(admin.ModelAdmin):
             self.message_user(request, '请导入正确的文件！',  extra_tags='error')
         
         os.remove("media/eis/temp.xls")
+
+class PersonEISAdmin(admin.ModelAdmin):
+    readonly_fields = ['havelook']
+    list_display = ('IDcard_num','havelook')
+    search_fields = ('IDcard_num','havelook')
+   
+admin.site.register(PersonEIS,PersonEISAdmin)

@@ -11,8 +11,12 @@ import ast
 import os
 
 admin.site.site_header = '华电龙口 人力资源部 后台管理系统'
-admin.site.register(Person)
+class PersonAdmin(admin.ModelAdmin):
+    list_display = ('IDcard','havelook')
+    readonly_fields = ['havelook']
+    search_fields = ('IDcard','havelook')
 
+admin.site.register(Person,PersonAdmin)
 
 def get_excel_information(excel_file):
     inputError = "" #存放没有导入人的名单
