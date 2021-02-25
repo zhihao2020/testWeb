@@ -139,19 +139,19 @@ class UploadExcel_Admin(admin.ModelAdmin):
                     persondict = {}
                     for per in User.objects.only():
                         #将会增加身份证号
-                        logined.add(per)
+                        logined.add(per.get_username())
                     for y in Person.objects.only():
                         persondict[y.IDcard] = y.name
                     
                     test = set(persondict.keys())
-                    print(test)
+                    #print(test)
                     with open('media/download/temp_hpfs.txt','w') as fd:
                         #filecsv = csv.writer(fd)
                         for people in test.difference(logined):
                             #print(people,persondict[people])
                             #filecsv.writerow([people,persondict[people]])
                             fd.write('%s:%s \n'%(people,persondict[people]))
-                    message = format_html('下载 <a href="/hpfs/download">没有注册人员名单</a>')
+                    message = format_html('下载 <a href="/hpfs/PNraC66VScDy">没有注册人员名单</a>')
                     self.message_user(request, message,extra_tags='error')
 
             except:

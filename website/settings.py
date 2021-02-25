@@ -24,7 +24,7 @@ SECRET_KEY = '5dwu)2l0^=%kn#^84dc$_i@+%w*-o-iu-3ju8t%d&v872x%*-e'
 #SECRET_KEY = cfg.get('default','SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 
@@ -81,18 +81,17 @@ WSGI_APPLICATION = 'website.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'renshi',
-        'USER':'HR',
-        'PASSWORD':'lifang@2408zx',
+        'NAME': 'test',
+        'USER':'test',
+        'PASSWORD':'123456',
         'HOST':'localhost',
         'PORT':'3306',
-        'CONN_MAX_AGE':5 * 60,
     }
 }
-
 
 
 # Password validation

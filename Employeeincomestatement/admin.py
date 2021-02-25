@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 import xlrd
 import ast
 import os
-import csv
+import secrets
 
 # Register your models here.
 admin.site.site_header = '华电龙口 人力资源部 后台管理系统'
@@ -43,7 +43,7 @@ def get_excel_information(excel_file):
                 month_salary = str(info.cell(n,5)).split(":")[1]
                 
             month_flag = str(info.cell(n,6)).split(":")[1]
-            if "*" in month_flag:
+            if "SPICAL" in month_flag:
                 try:
                     month_start = ast.literal_eval(str(info.cell(n,7)).split(":")[1])
                 except ValueError:
@@ -86,20 +86,22 @@ class UploadExcel_Admin(admin.ModelAdmin):
                     persondict = {}
                     for per in User.objects.only():
                         #将会增加身份证号
-                        logined.add(per)
+                        logined.add(per.get_username())
+
                     for y in PersonEIS.objects.only():
                         persondict[y.IDcard_num] = y.name
                     test = set(persondict.keys())
+                  
                     with open('media/download/temp_eis.txt','w') as fd:
                         for people in test.difference(logined):
                             fd.write('%s:%s \n'%(people,persondict[people]))
-
-                    message = format_html('下载 <a href="/eis/download">没有注册人员名单</a>')
+                    
+                    message = format_html('下载 <a href="/eis/Pxym7N2zJR56">没有注册人员名单</a>')
                     self.message_user(request, message, extra_tags='error')
             except:
                 self.message_user(request,'名单导入成功！')
         except:
-            self.message_user(request, '请导入正确的文件！',  extra_tags='error')
+           self.message_user(request, '请导入正确的文件！',  extra_tags='error')
         
         os.remove("media/eis/temp.xls")
 

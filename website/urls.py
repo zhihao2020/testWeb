@@ -28,6 +28,6 @@ urlpatterns = [
     url(r'^register/$',views.register,name="register"),
     url(r'^logout/$',views.logOut,name="logout"),
     url(r'^EIS/',include('Employeeincomestatement.urls')),
-    url(r'^hpfs/download/$',views.hpfs_download),
-    url(r'^eis/download/$',views.eis_download),
+    url(r'^hpfs/PNraC66VScDy/$',views.hpfs_download),
+    url(r'^eis/Pxym7N2zJR56/$',views.eis_download),
 ]
